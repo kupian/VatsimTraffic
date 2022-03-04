@@ -10,6 +10,7 @@ def getPilots():
     response = requests.get(url)
     for aircraft in response.json():
         pilots += 1
+    return pilots
 
 def writeEntry(pilots):
     header = ['timestamp', 'pilots']
