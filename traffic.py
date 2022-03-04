@@ -1,28 +1,15 @@
-
 from bs4 import BeautifulSoup
 import requests
 import csv
 from datetime import datetime
 import os
 
-def findLength(data, start):
-    length = 1
-    index = start
-    while data[index+1] != "<":
-        length += 1
-        index += 1 
-    return length
-
 def getPilots():
-    url = 'https://stats.vatsim.net/who'
-    page = requests.get(url)
-    soup = BeautifulSoup(page.text, 'html.parser')
-    table_entries = str(soup.find_all(class_="table table-striped entry-content"))
-    pilots_offset = 17
-    pilots_index = table_entries.index("Pilots:")
-    numLength = findLength(table_entries, pilots_index+17)
-    pilots = int(table_entries[pilots_index+pilots_offset:pilots_index+pilots_offset+numLength])
-    return pilots
+    pilots = 0
+    url = 'https://api2.simaware.ca/api/livedata/live.json'
+    response = requests.get(url)
+    for aircraft in response.json():
+        pilots += 1
 
 def writeEntry(pilots):
     header = ['timestamp', 'pilots']
