@@ -1,2 +1,2 @@
 #!/bin/bash
-menv/bin/python traffic.py
+/home/alex/VatsimTraffic/menv/bin/python traffic.py
