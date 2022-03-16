@@ -4,6 +4,8 @@ import csv
 from datetime import datetime
 import os
 
+#eijiejf
+
 def getPilots():
     pilots = 0
     url = 'https://api2.simaware.ca/api/livedata/live.json'
